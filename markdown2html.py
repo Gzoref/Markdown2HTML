@@ -42,10 +42,11 @@ def parse_unordered_lists(unorded_list: list) -> 'HTML ul li':
             html_unordered.append('<li>' + uls[1:].strip(' ') + '</li>')
         elif len(uls) == 0 or uls[0] != '-':
             html_unordered.append('</ul>')
-            #html_unordered.append(uls)
+            # html_unordered.append(uls)
             print(unorded_list)
-                
+
     return html_unordered
+
 
 def _main():
     '''
@@ -78,7 +79,7 @@ def _main():
 
     md_parser_list = parse_headings(md_parser_list)
     md_parser_list = '\n'.join(md_parser_list).split('\n')
-  
+
     md_parser_list = parse_unordered_lists(md_parser_list)
     md_parser_list = '\n'.join(md_parser_list).split('\n')
 
