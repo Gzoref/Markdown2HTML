@@ -62,6 +62,7 @@ def _main():
     elif not path.exists(argv[1]):
         print('Missing {}'.format(argv[1]), file=stderr)
         exit(1)
+    exit(0)
 
     markdown_file = argv[1]
     output_file = argv[2]
