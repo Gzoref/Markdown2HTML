@@ -93,5 +93,5 @@ def _main():
             file.write(md_symbol + '\n')
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     _main()
