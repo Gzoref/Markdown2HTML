@@ -46,6 +46,7 @@ def parse_headings(headings_list: list):
     return html_unordered
  """
 
+
 def _main():
     '''
     Parses markdown file, makes appropriate method call
@@ -61,7 +62,6 @@ def _main():
     elif not path.exists(argv[1]):
         print('Missing {}'.format(argv[1]), file=stderr)
         exit(1)
-   
 
     markdown_file = argv[1]
     output_file = argv[2]
