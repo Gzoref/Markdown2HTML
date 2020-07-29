@@ -30,7 +30,7 @@ def parse_headings(headings_list: list):
     return html_headings
 
 
-def parse_unordered_lists(unorded_list: list) -> 'HTML ul li':
+""" def parse_unordered_lists(unorded_list: list):
     '''
     Parses markdown unordered lists and converts them to HTML heading tags
     '''
@@ -44,7 +44,7 @@ def parse_unordered_lists(unorded_list: list) -> 'HTML ul li':
             html_unordered.append('</ul>')
             html_unordered.append(uls)
     return html_unordered
-
+ """
 
 def _main():
     '''
@@ -61,14 +61,15 @@ def _main():
     elif not path.exists(argv[1]):
         print('Missing {}'.format(argv[1]), file=stderr)
         exit(1)
-    else:
-        print()
-        exit(0)
+   
 
     markdown_file = argv[1]
     output_file = argv[2]
 
-    # List of markdown file elements
+    '''
+    List of markdown file elements
+    '''
+
     md_parser_list = []
 
     '''
@@ -81,8 +82,8 @@ def _main():
     md_parser_list = parse_headings(md_parser_list)
     md_parser_list = '\n'.join(md_parser_list).split('\n')
 
-    md_parser_list = parse_unordered_lists(md_parser_list)
-    md_parser_list = '\n'.join(md_parser_list).split('\n')
+    """   md_parser_list = parse_unordered_lists(md_parser_list)
+    md_parser_list = '\n'.join(md_parser_list).split('\n') """
 
     '''
     Create HTML file and write converted markdown to html tags
