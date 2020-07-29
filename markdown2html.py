@@ -58,9 +58,12 @@ def _main():
     if len(argv) < 3:
         print('Usage: ./markdown2html.py README.md README.html', file=stderr)
         exit(1)
-    if not path.exists(argv[1]):
+    elif not path.exists(argv[1]):
         print('Missing {}'.format(argv[1]), file=stderr)
         exit(1)
+    else:
+        print()
+        exit(0)
 
     markdown_file = argv[1]
     output_file = argv[2]
