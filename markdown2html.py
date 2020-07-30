@@ -14,11 +14,11 @@ def parse_headings(headings_list: list):
     Parses markdown headings and converts them to HTML heading tags
     '''
     html_headings = []
-    number_of_hashes = 0
 
     # If hash '#' is found, count number of hashes
     for headings in headings_list:
-        if len(headings) > 0 and headings[0] == '#' and ' ' in headings:
+        if len(headings) > 0 and headings[0] == '#':
+            number_of_hashes = 0
             while number_of_hashes < len(
                     headings) and headings[number_of_hashes] == '#':
                 number_of_hashes += 1
@@ -27,7 +27,7 @@ def parse_headings(headings_list: list):
                 number_of_hashes = 6
             html_tag = 'h' + str(number_of_hashes)
             headings = headings.strip('#')
-            #Do not create a space between tag and text
+            # Do not create a space between tag and text
             headings = headings.strip(' ')
             headings = '<' + html_tag + '>' + headings + '</' + html_tag + '>'
         html_headings.append(headings)
