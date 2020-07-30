@@ -1,12 +1,12 @@
 #!/usr/bin/python3
 
+'''
+Converts Markdown to HTML
+'''
 from sys import argv
 from sys import stderr
 from os import path
 
-'''
-Converts Markdown to HTML
-'''
 
 if __name__ == "__main__":
     '''
@@ -19,6 +19,7 @@ if __name__ == "__main__":
         print('Missing {}'.format(argv[1]), file=stderr)
         exit(1)
     exit(0)
+
     """
     '''
     List of markdown file elements
