@@ -4,9 +4,9 @@ from sys import argv
 from sys import stderr
 from os import path
 
-"""
+'''
 Converts Markdown to HTML
-"""
+'''
 
 if __name__ == "__main__":
     '''
@@ -19,7 +19,7 @@ if __name__ == "__main__":
         print('Missing {}'.format(argv[1]), file=stderr)
         exit(1)
     exit(0)
-
+    """
     '''
     List of markdown file elements
     '''
@@ -42,4 +42,4 @@ if __name__ == "__main__":
     '''
     with open(output_file, 'w') as file:
         for md_symbol in md_parser_list:
-            file.write(md_symbol + '\n')
+            file.write(md_symbol + '\n') """
