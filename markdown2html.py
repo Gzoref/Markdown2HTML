@@ -18,7 +18,7 @@ def parse_headings(headings_list: list):
 
     # If hash '#' is found, count number of hashes
     for headings in headings_list:
-        if len(headings) > 0 and headings[0] == '#':
+        if len(headings) > 0 and headings[0] == '#' and ' ' in headings:
             while number_of_hashes < len(
                     headings) and headings[number_of_hashes] == '#':
                 number_of_hashes += 1
@@ -27,6 +27,7 @@ def parse_headings(headings_list: list):
                 number_of_hashes = 6
             html_tag = 'h' + str(number_of_hashes)
             headings = headings.strip('#')
+            #Do not create a space between tag and text
             headings = headings.strip(' ')
             headings = '<' + html_tag + '>' + headings + '</' + html_tag + '>'
         html_headings.append(headings)
