@@ -34,6 +34,58 @@ def parse_headings(headings_list: list):
     return html_headings
 
 
+def parse_ordered_list(list_item: list):
+    '''
+    Parses markdown orderedlists and converts them to HTML heading tags
+    '''
+    html_list = []
+    is_ul = False
+    # If '-' is found
+    for uls in list_item:
+        if len(uls) > 0 and uls[0] == '-':
+            if is_ul:
+                # Create li tags and blank space on left so text comes after
+                # tag
+                html_list.append('<li>' + uls[1:].lstrip(' ') + '</li>')
+            # Create ul with more than one list item
+            else:
+                is_ul = True
+                html_list.append('<ul>')
+                html_list.append('<li>' + uls[1:].lstrip(' ') + '</li>')
+        # Find end of list items and close tags
+        elif (len(uls) == 0 or uls[0] != '-') and is_ul:
+            is_ul = False
+            html_list.append('</ul>')
+            html_list.append(uls)
+        else:
+            html_list.append(uls)
+    return html_list
+
+
+def parse_unordered_list(list_item: list):
+    '''
+    Parses markdown unordered lists and converts them to HTML heading tags
+    '''
+    html_list = []
+    is_ol = False
+    for ols in list_item:
+        if len(ols) > 0 and ols[0] == '*':
+            if is_ol:
+                html_list.append('<li>' + ols[1:].lstrip(' ') + '</li>')
+            else:
+                is_ol = True
+                html_list.append('<ol>')
+                html_list.append('<li>' + ols[1:].lstrip(' ') + '</li>')
+        # Find end of list items and close tags
+        elif (len(ols) == 0 or ols[0] != '*') and is_ol:
+            is_ol = False
+            html_list.append('</ol>')
+            html_list.append(ols)
+        else:
+            html_list.append(ols)
+    return html_list
+
+
 def file_read_write():
     '''
     Parses markdown file, makes appropriate method call
@@ -56,7 +108,6 @@ def file_read_write():
     '''
     List of markdown file elements
     '''
-
     md_parser_list = []
 
     '''
@@ -67,7 +118,22 @@ def file_read_write():
         md_parser_list = file.readlines()
     md_parser_list = ''.join(md_parser_list).split('\n')
 
+    '''
+    Call header method and add to parsed markdown list
+    '''
     md_parser_list = parse_headings(md_parser_list)
+    md_parser_list = '\n'.join(md_parser_list).split('\n')
+
+    '''
+    Call ordered list method and add to parsed markdown list
+    '''
+    md_parser_list = parse_ordered_list(md_parser_list)
+    md_parser_list = '\n'.join(md_parser_list).split('\n')
+
+    '''
+    Call unordered list method and add to parsed markdown list
+    '''
+    md_parser_list = parse_unordered_list(md_parser_list)
     md_parser_list = '\n'.join(md_parser_list).split('\n')
 
     '''
